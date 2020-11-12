@@ -183,14 +183,14 @@
       },
       methods: {
         updatePost() {
-          let uri = 'http://localhost/myapp/public/api/estudante/update/'+ this.$route.params.id;
+          let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/update/'+ this.$route.params.id;
           this.axios.get(uri, { params: this.user })
           .then(response => {
-              window.location.href = 'http://localhost/myapp/public/create';
+              window.location.href = 'http://afternoon-brook-71877.herokuapp.com/api/create';
           })
         },
         getSeries: function(){
-          axios.get('/myapp/public/api/getSeriesIngresso')
+          axios.get('/api/getSeriesIngresso')
           .then(function (response) {
               this.series = response.data;
           }.bind(this));
@@ -220,7 +220,7 @@
       created: function(){
         this.getSeries();
 
-        let uri = 'http://localhost/myapp/public/api/estudante/edit/'+ this.$route.params.id;
+        let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/edit/'+ this.$route.params.id;
         this.axios.get(uri).then((response) => {
           this.user.nome_aluno = response.data.estudante.nome_aluno;
           this.user.data_nascimento = response.data.estudante.data_nascimento;

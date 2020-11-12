@@ -1955,7 +1955,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _app_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../app.js */ "./resources/js/app.js");
 //
 //
 //
@@ -2100,7 +2099,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 var isValidCepLength = function isValidCepLength(value) {
@@ -2185,8 +2183,8 @@ var isValidCepLength = function isValidCepLength(value) {
         return;
       }
 
-      var uri = '/estudante/create';
-      _app_js__WEBPACK_IMPORTED_MODULE_1__["http"].post(uri, this.user).then(function (response) {
+      var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
+      http.post(uri, this.user).then(function (response) {
         _this.$router.push({
           name: 'user'
         });
@@ -2453,15 +2451,15 @@ var isValidCepLength = function isValidCepLength(value) {
   },
   methods: {
     updatePost: function updatePost() {
-      var uri = 'http://localhost/myapp/public/api/estudante/update/' + this.$route.params.id;
+      var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/update/' + this.$route.params.id;
       this.axios.get(uri, {
         params: this.user
       }).then(function (response) {
-        window.location.href = 'http://localhost/myapp/public/create';
+        window.location.href = 'http://afternoon-brook-71877.herokuapp.com/api/create';
       });
     },
     getSeries: function getSeries() {
-      axios.get('/myapp/public/api/getSeriesIngresso').then(function (response) {
+      axios.get('/api/getSeriesIngresso').then(function (response) {
         this.series = response.data;
       }.bind(this));
     },
@@ -2493,7 +2491,7 @@ var isValidCepLength = function isValidCepLength(value) {
     var _this2 = this;
 
     this.getSeries();
-    var uri = 'http://localhost/myapp/public/api/estudante/edit/' + this.$route.params.id;
+    var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/edit/' + this.$route.params.id;
     this.axios.get(uri).then(function (response) {
       _this2.user.nome_aluno = response.data.estudante.nome_aluno;
       _this2.user.data_nascimento = response.data.estudante.data_nascimento;
@@ -2597,7 +2595,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    var uri = 'http://localhost/escola/public/api/estudante/list';
+    var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/list';
     this.axios.get(uri).then(function (response) {
       _this.posts = response.data.data;
     });
@@ -2605,9 +2603,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     deletePost: function deletePost(id) {
       alert(id);
-      var uri = 'http://localhost/myapp/public/api/estudante/delete/' + id;
+      var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/delete/' + id;
       this.axios.get(uri).then(function (response) {
-        window.location.href = 'http://localhost/myapp/public/create';
+        window.location.href = 'http://afternoon-brook-71877.herokuapp.com/create';
       });
     }
   }
@@ -21008,7 +21006,7 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-8 offset-sm-2" }, [
           _c("div", [
-            _c("h2", [_vm._v("Cadastro de Aluno")]),
+            _c("h2", [_vm._v("Cadastro de Aluno tt")]),
             _vm._v(" "),
             _c(
               "form",

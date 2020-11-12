@@ -144,7 +144,7 @@
 
 <script>
     import { required, numeric } from "vuelidate/lib/validators";
-    import { http } from "../app.js";
+    
 
     const isValidCepLength = (value) => {
         if(value.length != 8) {
@@ -200,7 +200,7 @@
                 }
 
                
-                let uri = '/estudante/create';
+                let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
                 http.post(uri, this.user).then((response) => {
                   this.$router.push({name: 'user'});
                   if(response.data == 'sucesso') 

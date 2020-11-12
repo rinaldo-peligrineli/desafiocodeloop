@@ -40,7 +40,7 @@
         }
       },
       created() {
-      let uri = 'http://localhost/escola/public/api/estudante/list';
+      let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/list';
       this.axios.get(uri).then(response => {
         this.posts = response.data.data;
       });
@@ -49,10 +49,10 @@
       deletePost(id)
       {
         alert(id)
-         let uri = 'http://localhost/myapp/public/api/estudante/delete/'+ id;
+         let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/delete/'+ id;
           this.axios.get(uri)
           .then(response => {
-              window.location.href = 'http://localhost/myapp/public/create';
+              window.location.href = 'http://afternoon-brook-71877.herokuapp.com/create';
           })
       }
     }
