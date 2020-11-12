@@ -2185,23 +2185,19 @@ var isValidCepLength = function isValidCepLength(value) {
         return;
       }
 
-      alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.user));
       var uri = '/estudante/create';
       _app_js__WEBPACK_IMPORTED_MODULE_1__["http"].post(uri, this.user).then(function (response) {
         _this.$router.push({
           name: 'user'
         });
 
-        console.log(response.data, 'funcionou');
-
-        _this.$modal.show('modal-1');
+        if (response.data == 'sucesso') alert("SUCCESS!! \n\n" + _this.user.nome_aluno + ' incluido com sucesso');else alert("ERRRO!! \n\n" + _this.user.nome_aluno + ' Não Incluido');
       })["catch"](function (error) {
         console.log(error, 'nao funcionou');
       });
     },
     getSeries: function getSeries() {
-      console.log(this.$http.get);
-      axios.get('/myapp/public/api/getSeriesIngresso').then(function (response) {
+      axios.get('/api/getSeriesIngresso').then(function (response) {
         this.series = response.data;
       }.bind(this));
     },
@@ -2231,7 +2227,6 @@ var isValidCepLength = function isValidCepLength(value) {
   },
   created: function created() {
     this.getSeries();
-    $bvModal.show('modal-1');
   }
 });
 
@@ -39688,7 +39683,7 @@ vue__WEBPACK_IMPORTED_MODULE_3___default.a.use(vue_axios__WEBPACK_IMPORTED_MODUL
 
 
 var http = axios__WEBPACK_IMPORTED_MODULE_2___default.a.create({
-  baseURL: "http://localhost/myapp/public/api",
+  baseURL: "http://afternoon-brook-71877.herokuapp.com/api",
   timeout: 10000,
   headers: {
     "Access-Control-Allow-Origin": "*",
@@ -40153,8 +40148,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\myapp\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\myapp\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\desafiocodeloop\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\desafiocodeloop\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

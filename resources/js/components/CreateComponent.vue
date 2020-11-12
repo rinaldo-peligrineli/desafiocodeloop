@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-8 offset-sm-2">
                     <div>
-                        <h2>Cadastro de Aluno</h2>
+                        <h2>Cadastro de Aluno tt</h2>
                         <form @submit.prevent="handleSubmit">
                             <div class="form-group">
                                 <label for="nome_aluno">Nome do Aluno</label>
@@ -213,7 +213,7 @@
             },
            
             getSeries: function(){
-              console.log(this.$http.get);
+              
               axios.get('/api/getSeriesIngresso')
               .then(function (response) {
                   this.series = response.data;
