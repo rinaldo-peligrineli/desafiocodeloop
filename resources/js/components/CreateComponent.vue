@@ -152,7 +152,6 @@
         }
         return true;
     }
-
     
     export default {
         name: "app",
