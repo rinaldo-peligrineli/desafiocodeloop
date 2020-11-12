@@ -214,7 +214,7 @@
            
             getSeries: function(){
               console.log(this.$http.get);
-              axios.get('/myapp/public/api/getSeriesIngresso')
+              axios.get('/api/getSeriesIngresso')
               .then(function (response) {
                   this.series = response.data;
               }.bind(this));

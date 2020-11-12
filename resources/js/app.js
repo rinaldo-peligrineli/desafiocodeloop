@@ -22,7 +22,7 @@ import IndexComponent from './components/IndexComponent.vue';
 import EditComponent from './components/EditComponent.vue';
 
 const http = axios.create({
-    baseURL : "http://localhost/myapp/public/api",
+    baseURL : "http://afternoon-brook-71877.herokuapp.com/api",
     timeout : 10000,
     headers : {
         "Access-Control-Allow-Origin": "*",
