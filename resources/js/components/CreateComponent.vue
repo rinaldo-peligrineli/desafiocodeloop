@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-8 offset-sm-2">
                     <div>
-                        <h2>Cadastro de Aluno tt</h2>
+                        <h2>Cadastro de Aluno</h2>
                         <form @submit.prevent="handleSubmit">
                             <div class="form-group">
                                 <label for="nome_aluno">Nome do Aluno</label>
@@ -203,7 +203,7 @@
                 let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
                 this.axios.post(uri, this.user).then((response) => {
                   this.$router.push({name: 'user'});
-                  if(response.data == 'sucesso') 
+                  if(response.data == 'success') 
                     alert("SUCCESS!! \n\n" + this.user.nome_aluno + ' incluido com sucesso');
                   else 
                      alert("ERRRO!! \n\n" + this.user.nome_aluno + ' Não Incluido');
