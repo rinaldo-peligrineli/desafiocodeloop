@@ -201,7 +201,7 @@
 
                
                 let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
-                http.post(uri, this.user).then((response) => {
+                this.axios.post(uri, this.user).then((response) => {
                   this.$router.push({name: 'user'});
                   if(response.data == 'sucesso') 
                     alert("SUCCESS!! \n\n" + this.user.nome_aluno + ' incluido com sucesso');
