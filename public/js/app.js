@@ -2184,7 +2184,7 @@ var isValidCepLength = function isValidCepLength(value) {
       }
 
       var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
-      http.post(uri, this.user).then(function (response) {
+      this.axios.post(uri, this.user).then(function (response) {
         _this.$router.push({
           name: 'user'
         });
