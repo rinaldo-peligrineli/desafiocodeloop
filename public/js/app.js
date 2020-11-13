@@ -2595,7 +2595,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    var uri = 'http://localhost/desafiocodeloop/public/api/estudante/list';
+    var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/list';
     this.axios.get(uri).then(function (response) {
       _this.estudantes = response.data;
     });
@@ -2603,9 +2603,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     deletePost: function deletePost(id) {
       alert(id);
-      var uri = 'http://localhost/desafiocodeloop/public/api/estudante/delete/' + id;
+      var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/delete/' + id;
       this.axios.get(uri).then(function (response) {
-        window.location.href = 'http://localhost/desafiocodeloop/public/create';
+        window.location.href = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
       });
     }
   }
