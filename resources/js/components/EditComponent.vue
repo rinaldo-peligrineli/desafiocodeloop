@@ -155,7 +155,7 @@
        
         return true;
     }
-    
+
     const isValidCepLength = (value) => {
         if(value.length != 8) {
           return false;
@@ -188,7 +188,7 @@
       validations: {
         user: {
             nome_aluno: { required },
-            data_nascimento: { required },
+            data_nascimento: { required, isValidData },
             nome_responsavel: { required },
             cpf_responsavel: { required, numeric},
             dia_vencimento: { required },

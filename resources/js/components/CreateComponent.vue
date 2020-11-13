@@ -195,7 +195,7 @@
         validations: {
             dados: {
                 nome_aluno: { required },
-                data_nascimento: { required },
+                data_nascimento: { required, isValidData },
                 nome_responsavel: { required },
                 cpf_responsavel: { required, numeric},
                 dia_vencimento: { required },
