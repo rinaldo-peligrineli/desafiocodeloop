@@ -222,6 +222,8 @@
 
         let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/edit/'+ this.$route.params.id;
         this.axios.get(uri).then((response) => {
+          data = new Date(response.data.responsavel.dia_vencimento);
+          dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'});
           this.user.nome_aluno = response.data.estudante.nome_aluno;
           this.user.data_nascimento = response.data.estudante.data_nascimento;
           this.user.serie_ingresso = response.data.estudante.serie_ingresso_id;
