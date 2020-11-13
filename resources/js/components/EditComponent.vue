@@ -15,6 +15,7 @@
                     <label for="data_nascimento">Data Nascimento</label>
                     <input type="text" v-model="user.data_nascimento" id="data_nascimento" name="data_nascimento" class="form-control" :class="{ 'is-invalid': submitted && $v.user.data_nascimento.$error }" />
                     <div v-if="submitted && !$v.user.data_nascimento.required" class="invalid-feedback">Data Nascimento é obrigatório</div>
+                    <div v-if="submitted && !$v.user.data_nascimento.isValidData" class="invalid-feedback">Data Nascimento Invalido</div>
                 </div>
 
                 <div class="row">
@@ -137,6 +138,24 @@
 <script>
     import { required, numeric } from "vuelidate/lib/validators";
 
+    const isValidData = (value) => {
+        var regex = /^[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}$/g;
+        var ardt = value.split('/');
+        if(!regex.test(value)){
+          return false;
+        }else if (((ardt[1]==4)||(ardt[1]==6)||(ardt[1]==9)||(ardt[1]==11))&&(ardt[0]>30))
+          return false;
+        else if ( ardt[1]==2) {
+          if ((ardt[0]>28)&&((ardt[2]%4)!=0))
+            return false;
+          if ((ardt[0]>29)&&((ardt[2]%4)==0))
+            return false;
+        }
+
+       
+        return true;
+    }
+    
     const isValidCepLength = (value) => {
         if(value.length != 8) {
           return false;

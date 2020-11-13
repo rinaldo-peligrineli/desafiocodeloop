@@ -2099,7 +2099,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
+
+var isValidData = function isValidData(value) {
+  var regex = /^[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}$/g;
+  var ardt = value.split('/');
+
+  if (!regex.test(value)) {
+    return false;
+  } else if ((ardt[1] == 4 || ardt[1] == 6 || ardt[1] == 9 || ardt[1] == 11) && ardt[0] > 30) return false;else if (ardt[1] == 2) {
+    if (ardt[0] > 28 && ardt[2] % 4 != 0) return false;
+    if (ardt[0] > 29 && ardt[2] % 4 == 0) return false;
+  }
+
+  return true;
+};
 
 var isValidCepLength = function isValidCepLength(value) {
   if (value.length != 8) {
@@ -2377,7 +2392,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
+
+var isValidData = function isValidData(value) {
+  var regex = /^[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}$/g;
+  var ardt = value.split('/');
+
+  if (!regex.test(value)) {
+    return false;
+  } else if ((ardt[1] == 4 || ardt[1] == 6 || ardt[1] == 9 || ardt[1] == 11) && ardt[0] > 30) return false;else if (ardt[1] == 2) {
+    if (ardt[0] > 28 && ardt[2] % 4 != 0) return false;
+    if (ardt[0] > 29 && ardt[2] % 4 == 0) return false;
+  }
+
+  return true;
+};
 
 var isValidCepLength = function isValidCepLength(value) {
   if (value.length != 8) {
@@ -21104,6 +21134,12 @@ var render = function() {
                     ? _c("div", { staticClass: "invalid-feedback" }, [
                         _vm._v("Data Nascimento é obrigatório")
                       ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.submitted && !_vm.$v.user.data_nascimento.isValidData
+                    ? _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v("Data Nascimento Invalido")
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
@@ -21760,6 +21796,12 @@ var render = function() {
                   _vm.submitted && !_vm.$v.user.data_nascimento.required
                     ? _c("div", { staticClass: "invalid-feedback" }, [
                         _vm._v("Data Nascimento é obrigatório")
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.submitted && !_vm.$v.user.data_nascimento.isValidData
+                    ? _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v("Data Nascimento Invalido")
                       ])
                     : _vm._e()
                 ]),
