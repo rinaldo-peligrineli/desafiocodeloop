@@ -223,7 +223,7 @@
         let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/edit/'+ this.$route.params.id;
         this.axios.get(uri).then((response) => {
           this.user.nome_aluno = response.data.estudante.nome_aluno;
-          this.user.data_nascimento = response.data.estudante.data_nascimento;
+          this.user.data_nascimento = response.data.estudante.data_nascimento.split('-').reverse().join('/');
           this.user.serie_ingresso = response.data.estudante.serie_ingresso_id;
           this.user.nome_responsavel = response.data.responsavel.nome_responsavel;
           this.user.cpf_responsavel = response.data.responsavel.cpf_responsavel;

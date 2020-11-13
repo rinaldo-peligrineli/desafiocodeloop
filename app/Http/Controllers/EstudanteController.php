@@ -19,9 +19,6 @@ class EstudanteController extends Controller
      */
     public function index()
     {
-        //return new EstudanteCollection(Estudante::all());
-        
-        
         $objEstudantes =DB::table('estudantes')
             ->join('serie_ingresso', 'serie_ingresso.id', '=', 'estudantes.serie_ingresso_id')
             ->select('estudantes.id','estudantes.nome_aluno','estudantes.data_nascimento','serie_ingresso.serie_ingresso')->get();
