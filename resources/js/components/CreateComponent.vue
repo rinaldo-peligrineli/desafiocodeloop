@@ -15,7 +15,7 @@
                                 <label for="data_nascimento">Data Nascimento</label>
                                 <input type="text" v-model="dados.data_nascimento" id="data_nascimento" name="data_nascimento" class="form-control" :class="{ 'is-invalid': submitted && $v.dados.data_nascimento.$error }" />
                                 <div v-if="submitted && !$v.dados.data_nascimento.required" class="invalid-feedback">Data Nascimento é obrigatório</div>
-                                <div v-if="submitted && !$v.user.data_nascimento.isValidData" class="invalid-feedback">Data Nascimento Invalido</div>
+                                <div v-if="submitted && !$v.dados.data_nascimento.isValidData" class="invalid-feedback">Data Nascimento Invalido</div>
                             </div>
                             
                             <div class="row">

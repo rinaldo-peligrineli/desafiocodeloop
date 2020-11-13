@@ -21138,7 +21138,7 @@ var render = function() {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.submitted && !_vm.$v.user.data_nascimento.isValidData
+                  _vm.submitted && !_vm.$v.dados.data_nascimento.isValidData
                     ? _c("div", { staticClass: "invalid-feedback" }, [
                         _vm._v("Data Nascimento Invalido")
                       ])
