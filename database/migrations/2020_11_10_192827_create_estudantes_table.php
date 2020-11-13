@@ -21,9 +21,8 @@ class CreateEstudantesTable extends Migration
             $table->integer('responsavel_id')->nullable()->unsigned();
             $table->integer('aluno_endereco_id')->nullable()->unsigned();
             $table->timestamps();
-            $table->foreign('serie_ingresso_id')->references('id')->on('serie_ingresso');
-            $table->foreign('responsavel_id')->references('id')->on('aluno_responsavel');
-            $table->foreign('aluno_endereco_id')->references('id')->on('aluno_enderecos');
+            
+           
         });
     }
 
