@@ -202,6 +202,14 @@
       },
       methods: {
         updatePost() {
+          this.submitted = true;
+
+          // stop here if form is invalid
+          this.$v.$touch();
+          if (this.$v.$invalid) {
+              return;
+          }
+
           let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/update/'+ this.$route.params.id;
           this.axios.get(uri, { params: this.user })
           .then(response => {
