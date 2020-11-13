@@ -2189,7 +2189,7 @@ var isValidCepLength = function isValidCepLength(value) {
           name: 'user'
         });
 
-        if (response.data == 'sucesso') alert("SUCCESS!! \n\n" + _this.user.nome_aluno + ' incluido com sucesso');else alert("ERRRO!! \n\n" + _this.user.nome_aluno + ' Não Incluido');
+        if (response.data == 'success') alert("SUCCESS!! \n\n" + _this.user.nome_aluno + ' incluido com sucesso');else alert("ERRRO!! \n\n" + _this.user.nome_aluno + ' Não Incluido');
       })["catch"](function (error) {
         console.log(error, 'nao funcionou');
       });
@@ -2589,23 +2589,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      posts: []
+      estudantes: []
     };
   },
   created: function created() {
     var _this = this;
 
-    var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/list';
+    var uri = 'http://localhost/desafiocodeloop/public/api/estudante/list';
     this.axios.get(uri).then(function (response) {
-      _this.posts = response.data.data;
+      _this.estudantes = response.data;
     });
   },
   methods: {
     deletePost: function deletePost(id) {
       alert(id);
-      var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/delete/' + id;
+      var uri = 'http://localhost/desafiocodeloop/public/api/estudante/delete/' + id;
       this.axios.get(uri).then(function (response) {
-        window.location.href = 'http://afternoon-brook-71877.herokuapp.com/create';
+        window.location.href = 'http://localhost/desafiocodeloop/public/create';
       });
     }
   }
@@ -21006,7 +21006,7 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-8 offset-sm-2" }, [
           _c("div", [
-            _c("h2", [_vm._v("Cadastro de Aluno tt")]),
+            _c("h2", [_vm._v("Cadastro de Aluno")]),
             _vm._v(" "),
             _c(
               "form",
@@ -22366,7 +22366,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Posts")]),
+    _c("h1", [_vm._v("Alunos")]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-10" }),
@@ -22394,13 +22394,13 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.posts, function(post) {
-          return _c("tr", { key: post.id }, [
-            _c("td", [_vm._v(_vm._s(post.id))]),
+        _vm._l(_vm.estudantes, function(estudante) {
+          return _c("tr", { key: _vm.estudantes.id }, [
+            _c("td", [_vm._v(_vm._s(estudante.id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(post.nome_aluno))]),
+            _c("td", [_vm._v(_vm._s(estudante.nome_aluno))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(post.serie_ingresso))]),
+            _c("td", [_vm._v(_vm._s(estudante.serie_ingresso))]),
             _vm._v(" "),
             _c(
               "td",
@@ -22409,7 +22409,9 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "btn btn-primary",
-                    attrs: { to: { name: "edit", params: { id: post.id } } }
+                    attrs: {
+                      to: { name: "edit", params: { id: estudante.id } }
+                    }
                   },
                   [_vm._v("Edit")]
                 )
@@ -22424,7 +22426,7 @@ var render = function() {
                   staticClass: "btn btn-danger",
                   on: {
                     click: function($event) {
-                      return _vm.deletePost(post.id)
+                      return _vm.deletePost(estudante.id)
                     }
                   }
                 },
@@ -22445,11 +22447,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("ID")]),
+        _c("th", [_vm._v("ID#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Item Name")]),
+        _c("th", [_vm._v("Nome Aluno")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Item Price")]),
+        _c("th", [_vm._v("Série Ingresso")]),
         _vm._v(" "),
         _c("th", [_vm._v("Actions")])
       ])

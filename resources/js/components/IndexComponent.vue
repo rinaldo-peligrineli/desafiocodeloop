@@ -2,7 +2,7 @@
 
 <template>
   <div>
-      <h1>Posts</h1>
+      <h1>Alunos</h1>
         <div class="row">
           <div class="col-md-10"></div>
           <div class="col-md-2">
@@ -13,19 +13,19 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Item Name</th>
-                <th>Item Price</th>
+                <th>ID#</th>
+                <th>Nome Aluno</th>
+                <th>Série Ingresso</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-                <tr v-for="post in posts" :key="post.id">
-                    <td>{{ post.id }}</td>
-                    <td>{{ post.nome_aluno }}</td>
-                    <td>{{ post.serie_ingresso }}</td>
-                    <td><router-link :to="{name: 'edit', params: { id: post.id }}" class="btn btn-primary">Edit</router-link></td>
-                    <td><button class="btn btn-danger" @click="deletePost(post.id)">Delete</button></td>
+                <tr v-for="estudante in estudantes" :key="estudantes.id">
+                    <td>{{ estudante.id }}</td>
+                    <td>{{ estudante.nome_aluno }}</td>
+                    <td>{{ estudante.serie_ingresso }}</td>
+                    <td><router-link :to="{name: 'edit', params: { id: estudante.id }}" class="btn btn-primary">Edit</router-link></td>
+                    <td><button class="btn btn-danger" @click="deletePost(estudante.id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -36,13 +36,13 @@
   export default {
       data() {
         return {
-          posts: []
+          estudantes: []
         }
       },
       created() {
       let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/list';
       this.axios.get(uri).then(response => {
-        this.posts = response.data.data;
+        this.estudantes = response.data;
       });
     },
     methods: {
@@ -52,7 +52,7 @@
          let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/delete/'+ id;
           this.axios.get(uri)
           .then(response => {
-              window.location.href = 'http://afternoon-brook-71877.herokuapp.com/create';
+              window.location.href = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
           })
       }
     }

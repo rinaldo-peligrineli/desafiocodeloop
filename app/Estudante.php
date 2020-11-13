@@ -11,4 +11,8 @@ class Estudante extends Model
     protected $casts = [
         'data_nascimento' => 'datetime:Y-m-d'
      ];
+
+     public function serieIngresso() {
+        return $this->belongsTo('App\SerieIngresso');
+     } 
 }
