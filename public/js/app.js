@@ -2151,7 +2151,8 @@ var isValidCepLength = function isValidCepLength(value) {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
       },
       data_nascimento: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+        isValidData: isValidData
       },
       nome_responsavel: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
@@ -2444,7 +2445,8 @@ var isValidCepLength = function isValidCepLength(value) {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
       },
       data_nascimento: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+        isValidData: isValidData
       },
       nome_responsavel: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
