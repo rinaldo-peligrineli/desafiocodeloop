@@ -2493,12 +2493,8 @@ var isValidCepLength = function isValidCepLength(value) {
     this.getSeries();
     var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/edit/' + this.$route.params.id;
     this.axios.get(uri).then(function (response) {
-      objData = new Date(response.data.responsavel.dia_vencimento);
-      dataFormatada = objData.toLocaleDateString('pt-BR', {
-        timeZone: 'UTC'
-      });
       _this2.user.nome_aluno = response.data.estudante.nome_aluno;
-      _this2.user.data_nascimento = dataFormatada;
+      _this2.user.data_nascimento = response.data.estudante.data_nascimento;
       _this2.user.serie_ingresso = response.data.estudante.serie_ingresso_id;
       _this2.user.nome_responsavel = response.data.responsavel.nome_responsavel;
       _this2.user.cpf_responsavel = response.data.responsavel.cpf_responsavel;
