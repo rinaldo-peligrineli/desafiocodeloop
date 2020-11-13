@@ -2114,7 +2114,7 @@ var isValidCepLength = function isValidCepLength(value) {
   data: function data() {
     return {
       series: [],
-      user: {
+      dados: {
         nome_aluno: "",
         data_nascimento: "",
         nome_responsavel: "",
@@ -2131,7 +2131,7 @@ var isValidCepLength = function isValidCepLength(value) {
     };
   },
   validations: {
-    user: {
+    dados: {
       nome_aluno: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
       },
@@ -2184,12 +2184,12 @@ var isValidCepLength = function isValidCepLength(value) {
       }
 
       var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
-      this.axios.post(uri, this.user).then(function (response) {
+      this.axios.post(uri, this.dados).then(function (response) {
         _this.$router.push({
-          name: 'user'
+          name: 'dados'
         });
 
-        if (response.data == 'success') alert("SUCCESS!! \n\n" + _this.user.nome_aluno + ' incluido com sucesso');else alert("ERRRO!! \n\n" + _this.user.nome_aluno + ' Não Incluido');
+        if (response.data == 'success') alert("SUCCESS!! \n\n" + _this.dados.nome_aluno + ' incluido com sucesso');else alert("ERRRO!! \n\n" + _this.dados.nome_aluno + ' Não Incluido');
       })["catch"](function (error) {
         console.log(error, 'nao funcionou');
       });
@@ -2207,15 +2207,15 @@ var isValidCepLength = function isValidCepLength(value) {
         var data = resp.data;
 
         if (!data.erro) {
-          _this2.user.rua = data.logradouro;
-          _this2.user.bairro = data.bairro;
-          _this2.user.cidade = data.localidade;
-          _this2.user.estado = data.uf;
+          _this2.dados.rua = data.logradouro;
+          _this2.dados.bairro = data.bairro;
+          _this2.dados.cidade = data.localidade;
+          _this2.dados.estado = data.uf;
         } else {
-          _this2.user.rua = '';
-          _this2.user.bairro = '';
-          _this2.user.cidade = '';
-          _this2.user.estado = '';
+          _this2.dados.rua = '';
+          _this2.dados.bairro = '';
+          _this2.dados.cidade = '';
+          _this2.dados.estado = '';
           alert('Cep não encontrado');
         }
       })["catch"](function (error) {
@@ -2493,6 +2493,10 @@ var isValidCepLength = function isValidCepLength(value) {
     this.getSeries();
     var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/edit/' + this.$route.params.id;
     this.axios.get(uri).then(function (response) {
+      data = new Date(response.data.responsavel.dia_vencimento);
+      dataFormatada = data.toLocaleDateString('pt-BR', {
+        timeZone: 'UTC'
+      });
       _this2.user.nome_aluno = response.data.estudante.nome_aluno;
       _this2.user.data_nascimento = response.data.estudante.data_nascimento;
       _this2.user.serie_ingresso = response.data.estudante.serie_ingresso_id;
@@ -21029,32 +21033,32 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.user.nome_aluno,
-                        expression: "user.nome_aluno"
+                        value: _vm.dados.nome_aluno,
+                        expression: "dados.nome_aluno"
                       }
                     ],
                     staticClass: "form-control",
                     class: {
                       "is-invalid":
-                        _vm.submitted && _vm.$v.user.nome_aluno.$error
+                        _vm.submitted && _vm.$v.dados.nome_aluno.$error
                     },
                     attrs: {
                       type: "text",
                       id: "nome_aluno",
                       name: "nome_aluno"
                     },
-                    domProps: { value: _vm.user.nome_aluno },
+                    domProps: { value: _vm.dados.nome_aluno },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.user, "nome_aluno", $event.target.value)
+                        _vm.$set(_vm.dados, "nome_aluno", $event.target.value)
                       }
                     }
                   }),
                   _vm._v(" "),
-                  _vm.submitted && !_vm.$v.user.nome_aluno.required
+                  _vm.submitted && !_vm.$v.dados.nome_aluno.required
                     ? _c("div", { staticClass: "invalid-feedback" }, [
                         _vm._v("Nome do Aluno é Obrigatório")
                       ])
@@ -21071,28 +21075,28 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.user.data_nascimento,
-                        expression: "user.data_nascimento"
+                        value: _vm.dados.data_nascimento,
+                        expression: "dados.data_nascimento"
                       }
                     ],
                     staticClass: "form-control",
                     class: {
                       "is-invalid":
-                        _vm.submitted && _vm.$v.user.data_nascimento.$error
+                        _vm.submitted && _vm.$v.dados.data_nascimento.$error
                     },
                     attrs: {
                       type: "text",
                       id: "data_nascimento",
                       name: "data_nascimento"
                     },
-                    domProps: { value: _vm.user.data_nascimento },
+                    domProps: { value: _vm.dados.data_nascimento },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.user,
+                          _vm.dados,
                           "data_nascimento",
                           $event.target.value
                         )
@@ -21100,7 +21104,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm.submitted && !_vm.$v.user.data_nascimento.required
+                  _vm.submitted && !_vm.$v.dados.data_nascimento.required
                     ? _c("div", { staticClass: "invalid-feedback" }, [
                         _vm._v("Data Nascimento é obrigatório")
                       ])
@@ -21119,8 +21123,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.user.serie_ingresso,
-                              expression: "user.serie_ingresso"
+                              value: _vm.dados.serie_ingresso,
+                              expression: "dados.serie_ingresso"
                             }
                           ],
                           staticClass: "form-control",
@@ -21139,7 +21143,7 @@ var render = function() {
                                   return val
                                 })
                               _vm.$set(
-                                _vm.user,
+                                _vm.dados,
                                 "serie_ingresso",
                                 $event.target.multiple
                                   ? $$selectedVal
@@ -21153,11 +21157,11 @@ var render = function() {
                             _vm._v("Selecione")
                           ]),
                           _vm._v(" "),
-                          _vm._l(_vm.series, function(data) {
+                          _vm._l(_vm.series, function(serie) {
                             return _c(
                               "option",
-                              { domProps: { value: data.id } },
-                              [_vm._v(_vm._s(data.serie_ingresso))]
+                              { domProps: { value: serie.id } },
+                              [_vm._v(_vm._s(serie.serie_ingresso))]
                             )
                           })
                         ],
@@ -21177,28 +21181,28 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.user.nome_responsavel,
-                        expression: "user.nome_responsavel"
+                        value: _vm.dados.nome_responsavel,
+                        expression: "dados.nome_responsavel"
                       }
                     ],
                     staticClass: "form-control",
                     class: {
                       "is-invalid":
-                        _vm.submitted && _vm.$v.user.nome_responsavel.$error
+                        _vm.submitted && _vm.$v.dados.nome_responsavel.$error
                     },
                     attrs: {
                       type: "text",
                       id: "nome_responsavel",
                       name: "nome_responsavel"
                     },
-                    domProps: { value: _vm.user.nome_responsavel },
+                    domProps: { value: _vm.dados.nome_responsavel },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.user,
+                          _vm.dados,
                           "nome_responsavel",
                           $event.target.value
                         )
@@ -21206,7 +21210,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm.submitted && !_vm.$v.user.nome_responsavel.required
+                  _vm.submitted && !_vm.$v.dados.nome_responsavel.required
                     ? _c("div", { staticClass: "invalid-feedback" }, [
                         _vm._v("Nome da Mãe é Obrigatório")
                       ])
@@ -21223,28 +21227,28 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.user.cpf_responsavel,
-                        expression: "user.cpf_responsavel"
+                        value: _vm.dados.cpf_responsavel,
+                        expression: "dados.cpf_responsavel"
                       }
                     ],
                     staticClass: "form-control",
                     class: {
                       "is-invalid":
-                        _vm.submitted && _vm.$v.user.cpf_responsavel.$error
+                        _vm.submitted && _vm.$v.dados.cpf_responsavel.$error
                     },
                     attrs: {
                       type: "text",
                       id: "cpf_responsavel",
                       name: "cpf_responsavel"
                     },
-                    domProps: { value: _vm.user.cpf_responsavel },
+                    domProps: { value: _vm.dados.cpf_responsavel },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.user,
+                          _vm.dados,
                           "cpf_responsavel",
                           $event.target.value
                         )
@@ -21252,13 +21256,13 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm.submitted && !_vm.$v.user.cpf_responsavel.required
+                  _vm.submitted && !_vm.$v.dados.cpf_responsavel.required
                     ? _c("div", { staticClass: "invalid-feedback" }, [
                         _vm._v("CPF da Mãe é Obrigatório")
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.submitted && !_vm.$v.user.cpf_responsavel.numeric
+                  _vm.submitted && !_vm.$v.dados.cpf_responsavel.numeric
                     ? _c("div", { staticClass: "invalid-feedback" }, [
                         _vm._v("Digitar apenas numeros")
                       ])
@@ -21275,28 +21279,28 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.user.dia_vencimento,
-                        expression: "user.dia_vencimento"
+                        value: _vm.dados.dia_vencimento,
+                        expression: "dados.dia_vencimento"
                       }
                     ],
                     staticClass: "form-control",
                     class: {
                       "is-invalid":
-                        _vm.submitted && _vm.$v.user.dia_vencimento.$error
+                        _vm.submitted && _vm.$v.dados.dia_vencimento.$error
                     },
                     attrs: {
                       type: "text",
                       id: "dia_vencimento",
                       name: "dia_vencimento"
                     },
-                    domProps: { value: _vm.user.dia_vencimento },
+                    domProps: { value: _vm.dados.dia_vencimento },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.user,
+                          _vm.dados,
                           "dia_vencimento",
                           $event.target.value
                         )
@@ -21304,7 +21308,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm.submitted && !_vm.$v.user.dia_vencimento.required
+                  _vm.submitted && !_vm.$v.dados.dia_vencimento.required
                     ? _c("div", { staticClass: "invalid-feedback" }, [
                         _vm._v("Dia Vencimento é Obrigatório")
                       ])
@@ -21321,16 +21325,16 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.user.cep,
-                            expression: "user.cep"
+                            value: _vm.dados.cep,
+                            expression: "dados.cep"
                           }
                         ],
                         staticClass: "form-control",
                         class: {
-                          "is-invalid": _vm.submitted && _vm.$v.user.cep.$error
+                          "is-invalid": _vm.submitted && _vm.$v.dados.cep.$error
                         },
                         attrs: { type: "text", id: "cep", name: "cep" },
-                        domProps: { value: _vm.user.cep },
+                        domProps: { value: _vm.dados.cep },
                         on: {
                           blur: function($event) {
                             return _vm.getCep()
@@ -21339,24 +21343,24 @@ var render = function() {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.user, "cep", $event.target.value)
+                            _vm.$set(_vm.dados, "cep", $event.target.value)
                           }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.submitted && !_vm.$v.user.cep.required
+                      _vm.submitted && !_vm.$v.dados.cep.required
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             _vm._v("CEP é Obrigatório")
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm.submitted && !_vm.$v.user.cep.numeric
+                      _vm.submitted && !_vm.$v.dados.cep.numeric
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             _vm._v("Digitar apenas numeros")
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm.submitted && !_vm.$v.user.cep.isValidCepLength
+                      _vm.submitted && !_vm.$v.dados.cep.isValidCepLength
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             _vm._v("Tamanho Invalido")
                           ])
@@ -21375,27 +21379,27 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.user.rua,
-                            expression: "user.rua"
+                            value: _vm.dados.rua,
+                            expression: "dados.rua"
                           }
                         ],
                         staticClass: "form-control",
                         class: {
-                          "is-invalid": _vm.submitted && _vm.$v.user.rua.$error
+                          "is-invalid": _vm.submitted && _vm.$v.dados.rua.$error
                         },
                         attrs: { type: "text", id: "rua", name: "rua" },
-                        domProps: { value: _vm.user.rua },
+                        domProps: { value: _vm.dados.rua },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.user, "rua", $event.target.value)
+                            _vm.$set(_vm.dados, "rua", $event.target.value)
                           }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.submitted && !_vm.$v.user.rua.required
+                      _vm.submitted && !_vm.$v.dados.rua.required
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             _vm._v("Rua é Obrigatório")
                           ])
@@ -21416,34 +21420,34 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.user.numero,
-                            expression: "user.numero"
+                            value: _vm.dados.numero,
+                            expression: "dados.numero"
                           }
                         ],
                         staticClass: "form-control",
                         class: {
                           "is-invalid":
-                            _vm.submitted && _vm.$v.user.numero.$error
+                            _vm.submitted && _vm.$v.dados.numero.$error
                         },
                         attrs: { type: "text", id: "numero", name: "numero" },
-                        domProps: { value: _vm.user.numero },
+                        domProps: { value: _vm.dados.numero },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.user, "numero", $event.target.value)
+                            _vm.$set(_vm.dados, "numero", $event.target.value)
                           }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.submitted && !_vm.$v.user.numero.required
+                      _vm.submitted && !_vm.$v.dados.numero.required
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             _vm._v("Número é Obrigatório")
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm.submitted && !_vm.$v.user.numero.numeric
+                      _vm.submitted && !_vm.$v.dados.numero.numeric
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             _vm._v("Digitar apenas numeros")
                           ])
@@ -21464,8 +21468,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.user.complemento,
-                            expression: "user.complemento"
+                            value: _vm.dados.complemento,
+                            expression: "dados.complemento"
                           }
                         ],
                         staticClass: "form-control",
@@ -21474,14 +21478,14 @@ var render = function() {
                           id: "complemento",
                           name: "complemento"
                         },
-                        domProps: { value: _vm.user.complemento },
+                        domProps: { value: _vm.dados.complemento },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
                             _vm.$set(
-                              _vm.user,
+                              _vm.dados,
                               "complemento",
                               $event.target.value
                             )
@@ -21504,28 +21508,28 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.user.bairro,
-                            expression: "user.bairro"
+                            value: _vm.dados.bairro,
+                            expression: "dados.bairro"
                           }
                         ],
                         staticClass: "form-control",
                         class: {
                           "is-invalid":
-                            _vm.submitted && _vm.$v.user.bairro.$error
+                            _vm.submitted && _vm.$v.dados.bairro.$error
                         },
                         attrs: { type: "text", id: "bairro", name: "bairro" },
-                        domProps: { value: _vm.user.bairro },
+                        domProps: { value: _vm.dados.bairro },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.user, "bairro", $event.target.value)
+                            _vm.$set(_vm.dados, "bairro", $event.target.value)
                           }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.submitted && !_vm.$v.user.numero.required
+                      _vm.submitted && !_vm.$v.dados.numero.required
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             _vm._v("Bairro é Obrigatório")
                           ])
@@ -21546,28 +21550,28 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.user.cidade,
-                            expression: "user.cidade"
+                            value: _vm.dados.cidade,
+                            expression: "dados.cidade"
                           }
                         ],
                         staticClass: "form-control",
                         class: {
                           "is-invalid":
-                            _vm.submitted && _vm.$v.user.cidade.$error
+                            _vm.submitted && _vm.$v.dados.cidade.$error
                         },
                         attrs: { type: "text", id: "cidade", name: "cidade" },
-                        domProps: { value: _vm.user.cidade },
+                        domProps: { value: _vm.dados.cidade },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.user, "cidade", $event.target.value)
+                            _vm.$set(_vm.dados, "cidade", $event.target.value)
                           }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.submitted && !_vm.$v.user.cidade.required
+                      _vm.submitted && !_vm.$v.dados.cidade.required
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             _vm._v("Cidade é Obrigatório")
                           ])
@@ -21588,28 +21592,28 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.user.estado,
-                            expression: "user.estado"
+                            value: _vm.dados.estado,
+                            expression: "dados.estado"
                           }
                         ],
                         staticClass: "form-control",
                         class: {
                           "is-invalid":
-                            _vm.submitted && _vm.$v.user.estado.$error
+                            _vm.submitted && _vm.$v.dados.estado.$error
                         },
                         attrs: { type: "text", id: "estado", name: "estado" },
-                        domProps: { value: _vm.user.estado },
+                        domProps: { value: _vm.dados.estado },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.user, "estado", $event.target.value)
+                            _vm.$set(_vm.dados, "estado", $event.target.value)
                           }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.submitted && !_vm.$v.user.estado.required
+                      _vm.submitted && !_vm.$v.dados.estado.required
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             _vm._v("Estado é Obrigatório")
                           ])
