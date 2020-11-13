@@ -2199,7 +2199,7 @@ var isValidCepLength = function isValidCepLength(value) {
         return;
       }
 
-      var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
+      var uri = 'http://localhost/desafiocodeloop/public/api/estudante/create';
       this.axios.post(uri, this.dados).then(function (response) {
         _this.$router.push({
           name: 'dados'
@@ -2211,7 +2211,7 @@ var isValidCepLength = function isValidCepLength(value) {
       });
     },
     getSeries: function getSeries() {
-      axios.get('/api/getSeriesIngresso').then(function (response) {
+      axios.get('/desafiocodeloop/public/api/getSeriesIngresso').then(function (response) {
         this.series = response.data;
       }.bind(this));
     },
@@ -2491,15 +2491,15 @@ var isValidCepLength = function isValidCepLength(value) {
         return;
       }
 
-      var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/update/' + this.$route.params.id;
+      var uri = 'http://localhost/desafiocodeloop/public/api/estudante/update/' + this.$route.params.id;
       this.axios.get(uri, {
         params: this.user
       }).then(function (response) {
-        window.location.href = 'http://afternoon-brook-71877.herokuapp.com/api/create';
+        window.location.href = 'http://localhost/desafiocodeloop/public/api/create';
       });
     },
     getSeries: function getSeries() {
-      axios.get('/api/getSeriesIngresso').then(function (response) {
+      axios.get('/desafiocodeloop/public/api/getSeriesIngresso').then(function (response) {
         this.series = response.data;
       }.bind(this));
     },
@@ -2531,7 +2531,7 @@ var isValidCepLength = function isValidCepLength(value) {
     var _this2 = this;
 
     this.getSeries();
-    var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/edit/' + this.$route.params.id;
+    var uri = 'http://localhost/desafiocodeloop/public/api/estudante/edit/' + this.$route.params.id;
     this.axios.get(uri).then(function (response) {
       _this2.user.nome_aluno = response.data.estudante.nome_aluno;
       _this2.user.data_nascimento = response.data.estudante.data_nascimento.split('-').reverse().join('/');
@@ -2635,17 +2635,16 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/list';
+    var uri = 'http://localhost/desafiocodeloop/public/api/estudante/list';
     this.axios.get(uri).then(function (response) {
       _this.estudantes = response.data;
     });
   },
   methods: {
     deletePost: function deletePost(id) {
-      alert(id);
-      var uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/delete/' + id;
+      var uri = 'http://localhost/desafiocodeloop/public/api/estudante/delete/' + id;
       this.axios.get(uri).then(function (response) {
-        window.location.href = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
+        window.location.href = 'http://localhost/desafiocodeloop/public/api/estudante/create';
       });
     }
   }

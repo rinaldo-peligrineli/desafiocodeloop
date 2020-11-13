@@ -218,7 +218,7 @@
                 }
 
                
-                let uri = 'http://afternoon-brook-71877.herokuapp.com/api/estudante/create';
+                let uri = 'http://localhost/desafiocodeloop/public/api/estudante/create';
                 this.axios.post(uri, this.dados).then((response) => {
                   this.$router.push({name: 'dados'});
                   if(response.data == 'success') 
@@ -232,7 +232,7 @@
            
             getSeries: function(){
               
-              axios.get('/api/getSeriesIngresso')
+              axios.get('/desafiocodeloop/public/api/getSeriesIngresso')
               .then(function (response) {
                   this.series = response.data;
               }.bind(this));
