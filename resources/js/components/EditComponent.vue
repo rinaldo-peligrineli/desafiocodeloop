@@ -149,6 +149,7 @@
       data() {
         return {
           series: [],
+          objData: "",
           user: {
             nome_aluno: "",
             data_nascimento: "",
